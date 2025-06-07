@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { MatButton } from '@angular/material/button';
+import { ObservableCounter } from '../../observable-demo/observable-counter';
 
 @Component({
   selector: 'app-observable-overview',
-  imports: [MatButton],
+  imports: [ObservableCounter],
   templateUrl: './observable-overview.html',
   styleUrl: './observable-overview.scss',
 })
