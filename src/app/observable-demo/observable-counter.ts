@@ -19,6 +19,7 @@ export class ObservableCounter {
     this.isRunning.set(true);
     this.sub = interval(500).subscribe(val => {
       this.counter.set(val);
+      console.log(val);
       if (val > 10) {
         this.isRunning.set(false);
         this.sub?.unsubscribe();
