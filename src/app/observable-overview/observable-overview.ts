@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'observable-overview',
+  selector: 'app-observable-overview',
   imports: [],
   templateUrl: './observable-overview.html',
-  styleUrl: './observable-overview.css'
+  styleUrl: './observable-overview.css',
 })
-export class ObservableOverview {
-
-}
+export class ObservableOverview {}

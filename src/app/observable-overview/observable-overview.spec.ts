@@ -8,9 +8,8 @@ describe('ObservableOverview', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ObservableOverview]
-    })
-    .compileComponents();
+      imports: [ObservableOverview],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ObservableOverview);
     component = fixture.componentInstance;
