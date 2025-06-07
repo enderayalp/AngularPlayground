@@ -5,6 +5,6 @@ import { MatButton } from '@angular/material/button';
   selector: 'app-observable-overview',
   imports: [MatButton],
   templateUrl: './observable-overview.html',
-  styleUrl: './observable-overview.css',
+  styleUrl: './observable-overview.scss',
 })
 export class ObservableOverview {}
