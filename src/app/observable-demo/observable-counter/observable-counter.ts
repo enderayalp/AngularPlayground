@@ -13,13 +13,14 @@ export class ObservableCounter {
   protected readonly isRunning = signal(false);
   private sub?: Subscription;
 
-  startCounter() {
-    if (this.isRunning()) return;
+  protected startCounter() {
+    if (this.isRunning()) {
+      return;
+    }
 
     this.isRunning.set(true);
     this.sub = interval(500).subscribe(val => {
       this.counter.set(val);
-      console.log(val);
       if (val > 10) {
         this.isRunning.set(false);
         this.sub?.unsubscribe();
