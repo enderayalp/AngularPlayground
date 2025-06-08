@@ -1,2 +1,4 @@
-<button (click)="startCounter()" [disabled]="isRunning()" matButton="elevated">Start</button>
-<div> {{ counter() }}</div>
+<div class="flex-row center">
+  <button (click)="startCounter()" [disabled]="isRunning()" matButton="elevated">Start</button>
+  <div> {{ counter() }}</div>
+</div>
