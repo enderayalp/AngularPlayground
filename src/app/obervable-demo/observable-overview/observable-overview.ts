@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ObservableCounter } from '../../observable-demo/observable-counter/observable-counter';
-import { ObservableCounterList } from '../../observable-demo/observable-counter-list/observable-counter-list';
-import { SharedCounterList } from '../../observable-demo/shared-counter-list/shared-counter-list';
+import { ObservableCounter } from '../observable-counter/observable-counter';
+import { ObservableCounterList } from '../observable-counter-list/observable-counter-list';
+import { SharedCounterList } from '../shared-counter-list/shared-counter-list';
 
 @Component({
   selector: 'app-observable-overview',
