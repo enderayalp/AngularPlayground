@@ -1,0 +1,10 @@
+<div class="flex-row center">
+  <button class="button-style-shared" (click)="startCounter()" [disabled]="disableButton()" matButton="outlined">Start Shared Counter</button>
+  @for (counterWrapper of counters(); track counterWrapper) {
+    <div class="flex-row center">
+      <div>{{ counterWrapper().counter() }}</div>
+    </div>
+  }
+</div>
+
+

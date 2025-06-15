@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ObservableCounterList } from './observable-counter-list';
 
-describe('ObservableCounterList', () => {
+describe('SharedCounterList', () => {
   let component: ObservableCounterList;
   let fixture: ComponentFixture<ObservableCounterList>;
 

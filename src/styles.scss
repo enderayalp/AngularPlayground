@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
-
+@use "observable-demo-button-styles";
 html, body {
   height: 100%;
 }
@@ -13,12 +13,4 @@ body {
 .page-container {
   padding: 1rem;
   margin: 0 auto;
-}
-
-.button-style {
-  @include mat.button-overrides((
-    outlined-label-text-color: orange,
-    outlined-container-height: 10rem,
-  ));
-  width: 10rem;
 }

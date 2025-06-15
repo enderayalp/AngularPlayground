@@ -1,23 +1,24 @@
 import { Component, OnDestroy, signal, Signal, WritableSignal } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
+import { interval, share, Subscription } from 'rxjs';
 import { MatButton } from '@angular/material/button';
 
-export interface Counter {
-  counter: WritableSignal<number>;
+export interface CounterWrapper {
+  counter: WritableSignal<number | null>;
   isRunning: WritableSignal<boolean>;
 }
 
 @Component({
-  selector: 'app-observable-counter-list',
+  selector: 'app-shared-counter-list',
   imports: [MatButton],
-  templateUrl: './observable-counter-list.html',
-  styleUrl: './observable-counter-list.scss',
+  templateUrl: './shared-counter-list.html',
+  styleUrl: './shared-counter-list.scss',
 })
-export class ObservableCounterList implements OnDestroy {
-  protected counters = signal<Signal<Counter>[]>([]);
+export class SharedCounterList implements OnDestroy {
+  protected counters = signal<Signal<CounterWrapper>[]>([]);
   protected readonly disableButton = signal(false);
   private subs: Subscription[] = [];
   private readonly numberOfMaxRunningCounters = 4;
+  private sharedCounter$ = interval(500).pipe(share());
 
   ngOnDestroy(): void {
     this.subs.forEach((sub: Subscription) => {
@@ -26,11 +27,11 @@ export class ObservableCounterList implements OnDestroy {
   }
 
   protected startCounter() {
-    const counterSignal = signal({ counter: signal(0), isRunning: signal(true) });
+    const counterSignal = signal({ counter: signal<number | null>(null), isRunning: signal(true) });
     this.counters.update(counters => [...counters, counterSignal]);
     this.updateDisableButtonState();
 
-    const sub = interval(500).subscribe(value => {
+    const sub = this.sharedCounter$.subscribe(value => {
       counterSignal().counter.set(value);
       if (value > 10) {
         this.stopCounter(counterSignal);
@@ -42,7 +43,7 @@ export class ObservableCounterList implements OnDestroy {
     this.subs.push(sub);
   }
 
-  private stopCounter(counterSignal: Signal<Counter>) {
+  private stopCounter(counterSignal: Signal<CounterWrapper>) {
     counterSignal().counter.set(0);
     counterSignal().isRunning.set(false);
     this.updateDisableButtonState();
@@ -50,6 +51,6 @@ export class ObservableCounterList implements OnDestroy {
 
   private updateDisableButtonState() {
     const numberOfRunningCounters = this.counters().filter(counter => counter().isRunning()).length;
-    this.disableButton.set(numberOfRunningCounters > this.numberOfMaxRunningCounters);
+    this.disableButton.set(numberOfRunningCounters >= this.numberOfMaxRunningCounters);
   }
 }

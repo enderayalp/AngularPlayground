@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+
+.button-style {
+  @include mat.button-overrides((
+    outlined-label-text-color: orange,
+    outlined-container-height: 10rem,
+  ));
+  width: 10rem;
+}
+
+.button-style-shared {
+  @include mat.button-overrides((
+    outlined-label-text-color: red,
+    outlined-container-height: 10rem,
+  ));
+  width: 10rem;
+}

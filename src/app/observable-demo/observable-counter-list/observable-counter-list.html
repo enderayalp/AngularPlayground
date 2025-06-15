@@ -1,5 +1,5 @@
 <div class="flex-row center">
-  <button class="button-style" (click)="startCounter()" [disabled]="disableButton()" matButton="outlined">Start</button>
+  <button class="button-style" (click)="startCounter()" [disabled]="disableButton()" matButton="outlined">Start new Counter</button>
   @for (counter of counters(); track counter) {
     <div class="flex-row center">
       <div>{{ counter().counter() }}</div>
