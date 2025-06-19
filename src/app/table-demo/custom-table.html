@@ -1,1 +1,13 @@
-<p>custom-table works!</p>
+<div class="table">
+  <!-- Header-Zellen -->
+  @for (column of columns; track column) {
+    <div class="header-cell">{{ column }}</div>
+  }
+
+  <!-- Daten-Zellen -->
+  @for (row of data; track row) {
+    @for (cell of row; track cell) {
+      <div class="data-cell">{{ cell }}</div>
+    }
+  }
+</div>
