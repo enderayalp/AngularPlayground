@@ -24,4 +24,10 @@
   width: 5rem;
 }
 
-
+.button-style-custom {
+  @include mat.button-overrides((
+    outlined-label-text-color: orange,
+    outlined-container-height: 10rem,
+  ));
+  width: 10rem;
+}
